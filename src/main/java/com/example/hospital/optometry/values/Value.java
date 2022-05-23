@@ -4,21 +4,21 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class Tier implements ValueObject<TierEnum> {
-    private final TierEnum value;
+public class Value implements ValueObject<ValueEnum> {
+    private final ValueEnum value;
 
-    public Tier(TierEnum value) {
+    public Value(ValueEnum value) {
         this.value = Objects.requireNonNull(value);
     }
 
     @Override
-    public TierEnum value() {
+    public ValueEnum value() {
         return this.value;
     }
 }
 
-enum TierEnum {
-    SILVER,
-    GOLD,
-    PLATINUM
+enum ValueEnum {
+    ASTIGMATISMO,
+    MIOPIA,
+    HIPERMETROPIA
 }

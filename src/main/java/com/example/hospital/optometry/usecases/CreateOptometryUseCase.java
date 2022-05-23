@@ -8,9 +8,9 @@ import com.example.hospital.optometry.commands.CreateOptometry;
 
 public class CreateOptometryUseCase extends UseCase<RequestCommand<CreateOptometry>, ResponseEvents> {
     @Override
-    public void executeUseCase(RequestCommand<CreateOptometry> createFrontDeskRequestCommand) {
-        var command = createFrontDeskRequestCommand.getCommand();
-        var frontDesk = new Optometry(command.getEntityId(), command.getName());
-        emit().onResponse(new ResponseEvents(frontDesk.getUncommittedChanges()));
+    public void executeUseCase(RequestCommand<CreateOptometry> createOptometryRequestCommand) {
+        var command = createOptometryRequestCommand.getCommand();
+        var optometry = new Optometry(command.getEntityId(), command.getName());
+        emit().onResponse(new ResponseEvents(optometry.getUncommittedChanges()));
     }
 }

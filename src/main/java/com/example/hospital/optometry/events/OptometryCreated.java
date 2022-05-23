@@ -8,7 +8,7 @@ public class OptometryCreated extends DomainEvent {
     private final Name name;
 
     public OptometryCreated(Name name) {
-        super("com.zen.gymdomain.optometry.frontdeskcreated");
+        super("com.example.hospital.optometry.optometrycreated");
         this.name = name;
     }
 

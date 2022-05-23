@@ -24,9 +24,9 @@ public class Optometry extends AggregateEvent<OptometryID> {
     }
 
     public static Optometry from(OptometryID optometryID, List<DomainEvent> domainEvents) {
-        Optometry frontDesk = new Optometry(optometryID);
-        domainEvents.forEach(frontDesk::applyEvent);
-        return frontDesk;
+        Optometry optometry = new Optometry(optometryID);
+        domainEvents.forEach(optometry::applyEvent);
+        return optometry;
     }
 
 }

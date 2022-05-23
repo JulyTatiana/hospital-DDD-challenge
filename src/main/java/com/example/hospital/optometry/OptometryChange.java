@@ -7,11 +7,11 @@ import java.util.HashSet;
 
 public class OptometryChange extends EventChange {
 
-    public OptometryChange(Optometry frontDesk) {
+    public OptometryChange(Optometry optometry) {
         apply((OptometryCreated event) -> {
-            frontDesk.name = event.getName();
-            frontDesk.serviceSet = new HashSet<>();
-            frontDesk.productSet = new HashSet<>();
+            optometry.name = event.getName();
+            optometry.serviceSet = new HashSet<>();
+            optometry.productSet = new HashSet<>();
         });
 
     }

@@ -3,25 +3,25 @@ package com.example.hospital.optometry;
 import co.com.sofka.domain.generic.Entity;
 import com.example.hospital.optometry.values.ServiceID;
 import com.example.hospital.optometry.values.Price;
-import com.example.hospital.optometry.values.Tier;
+import com.example.hospital.optometry.values.Value;
 
 import java.util.Objects;
 
 public class Service extends Entity<ServiceID> {
-    protected Tier tier;
+    protected Value value;
     protected Price price;
-    public Service(ServiceID entityId, Tier tier, Price price) {
+    public Service(ServiceID entityId, Value value, Price price) {
         super(entityId);
-        this.tier = tier;
+        this.value = value;
         this.price = price;
     }
 
-    public Tier tier() {
-        return tier;
+    public Value value() {
+        return value;
     }
 
-    public void updateTier(Tier tier) {
-        this.tier = Objects.requireNonNull(tier);
+    public void updateTier(Value value) {
+        this.value = Objects.requireNonNull(value);
     }
 
     public Price price() {
