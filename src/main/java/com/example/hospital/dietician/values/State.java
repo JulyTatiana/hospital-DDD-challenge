@@ -4,10 +4,10 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class IsCompleted implements ValueObject<Boolean> {
+public class State implements ValueObject<Boolean> {
     private final Boolean value;
 
-    public IsCompleted(Boolean value) {
+    public State(Boolean value) {
         this.value = Objects.requireNonNull(value);
     }
 
@@ -20,7 +20,7 @@ public class IsCompleted implements ValueObject<Boolean> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        IsCompleted that = (IsCompleted) o;
+        State that = (State) o;
         return Objects.equals(value, that.value);
     }
 

@@ -21,9 +21,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-class UpdateTreatmentPlanIsCompletedUseCaseTest {
+class UpdateDietPlanStateUseCaseTest {
     @InjectMocks
-    private UpdateDietPlanIsCompletedUseCase useCase;
+    private UpdateDietPlanStateUseCase useCase;
 
     @Mock
     private DomainEventRepository repository;
@@ -31,8 +31,8 @@ class UpdateTreatmentPlanIsCompletedUseCaseTest {
     @Test
     void updateDietPlanIsCompleted() {
         DieticianID fakeDieticianID = DieticianID.of("noDieticianID");
-        IsCompleted isCompleted = new IsCompleted(true);
-        var command = new UpdateDietPlanState(fakeDieticianID, isCompleted);
+        State state = new State(true);
+        var command = new UpdateDietPlanState(fakeDieticianID, state);
 
         Mockito.when(repository.getEventsBy("noDieticianID")).thenReturn(List.of(
                 new DieticianCreated(new Name("Emilia")),

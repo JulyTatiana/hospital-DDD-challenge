@@ -6,7 +6,7 @@ import co.com.sofka.business.support.ResponseEvents;
 import com.example.hospital.dietician.Dietician;
 import com.example.hospital.dietician.commands.UpdateDietPlanState;
 
-public class UpdateDietPlanIsCompletedUseCase extends UseCase<RequestCommand<UpdateDietPlanState>, ResponseEvents> {
+public class UpdateDietPlanStateUseCase extends UseCase<RequestCommand<UpdateDietPlanState>, ResponseEvents> {
     @Override
     public void executeUseCase(RequestCommand<UpdateDietPlanState> updateRoutineIsCompletedRequestCommand) {
         var command = updateRoutineIsCompletedRequestCommand.getCommand();

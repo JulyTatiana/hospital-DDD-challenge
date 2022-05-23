@@ -61,8 +61,8 @@ public class Dietician extends AggregateEvent<DieticianID> {
         appendChange(new DietPlanDescriptionUpdated(description)).apply();
     }
 
-    public void updateRoutineIsCompleted(IsCompleted isCompleted) {
-        appendChange(new DietPlanStateUpdated(isCompleted)).apply();
+    public void updateRoutineIsCompleted(State state) {
+        appendChange(new DietPlanStateUpdated(state)).apply();
     }
 
     public void updateRoutineType(Type type) {

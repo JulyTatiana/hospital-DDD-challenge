@@ -1,17 +1,17 @@
 package com.example.hospital.dietician.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
-import com.example.hospital.dietician.values.IsCompleted;
+import com.example.hospital.dietician.values.State;
 
 public class DietPlanStateUpdated extends DomainEvent {
-    private final IsCompleted isCompleted;
+    private final State state;
 
-    public DietPlanStateUpdated(IsCompleted isCompleted) {
+    public DietPlanStateUpdated(State state) {
         super("com.example.hospital.dietician.routineiscompletedupdated");
-        this.isCompleted = isCompleted;
+        this.state = state;
     }
 
-    public IsCompleted getIsCompleted() {
-        return isCompleted;
+    public State getIsCompleted() {
+        return state;
     }
 }
