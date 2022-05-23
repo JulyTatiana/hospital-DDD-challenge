@@ -13,7 +13,7 @@ public class UpdateDietPlanType extends Command {
         this.type = type;
     }
 
-    public DieticianID getTrainerID() {
+    public DieticianID getDieticianID() {
         return dieticianID;
     }
 

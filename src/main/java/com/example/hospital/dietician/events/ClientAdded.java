@@ -21,19 +21,19 @@ public class ClientAdded extends DomainEvent {
         this.phoneNumber = phoneNumber;
     }
 
+    public ClientID getClientID() {
+        return clientID;
+    }
+
     public Name getName() {
         return name;
     }
 
-    public Condition getFitnessLevel() {
+    public Condition getCondition() {
         return condition;
     }
 
     public PhoneNumber getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public ClientID getClientID() {
-        return clientID;
     }
 }

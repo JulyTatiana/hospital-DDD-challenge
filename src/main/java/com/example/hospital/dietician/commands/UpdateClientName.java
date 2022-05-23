@@ -16,7 +16,7 @@ public class UpdateClientName extends Command {
         this.name = name;
     }
 
-    public DieticianID getTrainerID() {
+    public DieticianID getDieticianID() {
         return dieticianID;
     }
 

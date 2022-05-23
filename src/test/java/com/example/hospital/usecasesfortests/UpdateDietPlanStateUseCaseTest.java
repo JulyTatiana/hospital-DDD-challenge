@@ -50,7 +50,7 @@ class UpdateDietPlanStateUseCaseTest {
                 .getDomainEvents();
 
         var event = (DietPlanStateUpdated) domainEvents.get(0);
-        Assertions.assertEquals(true, event.getIsCompleted().value());
+        Assertions.assertEquals(true, event.getState().value());
         Mockito.verify(repository).getEventsBy("noDieticianID");
     }
 }

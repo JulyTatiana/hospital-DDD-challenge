@@ -10,8 +10,8 @@ public class UpdateDietPlanStateUseCase extends UseCase<RequestCommand<UpdateDie
     @Override
     public void executeUseCase(RequestCommand<UpdateDietPlanState> updateRoutineIsCompletedRequestCommand) {
         var command = updateRoutineIsCompletedRequestCommand.getCommand();
-        Dietician dietician = Dietician.from(command.getTrainerID(), repository().getEventsBy(command.getTrainerID().value()));
-        dietician.updateRoutineIsCompleted(command.getIsCompleted());
+        Dietician dietician = Dietician.from(command.getDieticianID(), repository().getEventsBy(command.getDieticianID().value()));
+        dietician.updateRoutineIsCompleted(command.getState());
         emit().onResponse(new ResponseEvents(dietician.getUncommittedChanges()));
     }
 }

@@ -39,7 +39,7 @@ class AddTreatmentPlanUseCaseTest {
 
 
         List<DomainEvent> domainEvents = UseCaseHandler.getInstance()
-                .setIdentifyExecutor(command.getTrainerID().value())
+                .setIdentifyExecutor(command.getDieticianID().value())
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();

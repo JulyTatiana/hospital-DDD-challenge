@@ -13,7 +13,7 @@ public class DieticianChange extends EventChange {
         });
 
         apply((ClientAdded event) -> {
-            Client client = new Client(event.getClientID(), event.getName(), event.getFitnessLevel(), event.getPhoneNumber());
+            Client client = new Client(event.getClientID(), event.getName(), event.getCondition(), event.getPhoneNumber());
             dietician.clientSet.add(client);
         });
 
@@ -45,7 +45,7 @@ public class DieticianChange extends EventChange {
         });
 
         apply((DietPlanStateUpdated event) -> {
-            dietician.dietPlan.updateIsCompleted(event.getIsCompleted());
+            dietician.dietPlan.updateIsCompleted(event.getState());
         });
 
         apply((DietPlanTypeUpdated event) -> {

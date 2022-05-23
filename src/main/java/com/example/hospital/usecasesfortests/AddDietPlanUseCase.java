@@ -10,7 +10,7 @@ public class AddDietPlanUseCase extends UseCase<RequestCommand<AddDietPlan>, Res
     @Override
     public void executeUseCase(RequestCommand<AddDietPlan> addRoutineRequestCommand) {
         var command = addRoutineRequestCommand.getCommand();
-        Dietician dietician = Dietician.from(command.getTrainerID(), repository().getEventsBy(command.getTrainerID().value()));
+        Dietician dietician = Dietician.from(command.getDieticianID(), repository().getEventsBy(command.getDieticianID().value()));
         
         dietician.addRoutine(command.getDescription(), command.getType());
         emit().onResponse(new ResponseEvents(dietician.getUncommittedChanges()));

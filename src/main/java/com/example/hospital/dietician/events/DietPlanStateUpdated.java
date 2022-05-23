@@ -11,7 +11,7 @@ public class DietPlanStateUpdated extends DomainEvent {
         this.state = state;
     }
 
-    public State getIsCompleted() {
+    public State getState() {
         return state;
     }
 }

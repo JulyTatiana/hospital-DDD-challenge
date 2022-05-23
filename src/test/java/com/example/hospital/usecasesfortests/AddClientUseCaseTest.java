@@ -44,7 +44,7 @@ class AddClientUseCaseTest {
 
 
         var events = UseCaseHandler.getInstance()
-                .setIdentifyExecutor(command.getTrainerID().value())
+                .setIdentifyExecutor(command.getDieticianID().value())
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
@@ -52,7 +52,7 @@ class AddClientUseCaseTest {
         var event = (ClientAdded) events.get(0);
         Assertions.assertEquals("Salomon", event.getName().value());
         assertEquals("3105968248", event.getPhoneNumber().value());
-        assertEquals(ConditionEnum.HIGH, event.getFitnessLevel().value());
+        assertEquals(ConditionEnum.HIGH, event.getCondition().value());
         Mockito.verify(repository).getEventsBy("noDieticianID");
     }
 

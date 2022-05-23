@@ -13,11 +13,11 @@ public class UpdateDietPlanState extends Command {
         this.state = state;
     }
 
-    public DieticianID getTrainerID() {
+    public DieticianID getDieticianID() {
         return dieticianID;
     }
 
-    public State getIsCompleted() {
+    public State getState() {
         return state;
     }
 }

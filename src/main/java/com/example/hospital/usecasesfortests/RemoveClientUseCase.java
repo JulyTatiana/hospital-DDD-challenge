@@ -10,7 +10,7 @@ public class RemoveClientUseCase extends UseCase<RequestCommand<RemoveClient>, R
     @Override
     public void executeUseCase(RequestCommand<RemoveClient> removeClientRequestCommand) {
         var command = removeClientRequestCommand.getCommand();
-        Dietician dietician = Dietician.from(command.getTrainerID(), repository().getEventsBy(command.getTrainerID().value()));
+        Dietician dietician = Dietician.from(command.getDieticianID(), repository().getEventsBy(command.getDieticianID().value()));
 
         dietician.removeClient(command.getClientID());
         emit().onResponse(new ResponseEvents(dietician.getUncommittedChanges()));

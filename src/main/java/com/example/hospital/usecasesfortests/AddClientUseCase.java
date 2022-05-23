@@ -10,9 +10,9 @@ public class AddClientUseCase extends UseCase<RequestCommand<AddClient>, Respons
     @Override
     public void executeUseCase(RequestCommand<AddClient> addClientRequestCommand) {
         var command = addClientRequestCommand.getCommand();
-        Dietician dietician = Dietician.from(command.getTrainerID(), repository().getEventsBy(command.getTrainerID().value()));
+        Dietician dietician = Dietician.from(command.getDieticianID(), repository().getEventsBy(command.getDieticianID().value()));
 
-        dietician.addClient(command.getName(), command.getFitnessLevel(), command.getPhoneNumber());
+        dietician.addClient(command.getName(), command.getCondition(), command.getPhoneNumber());
 
         emit().onResponse(new ResponseEvents(dietician.getUncommittedChanges()));
 

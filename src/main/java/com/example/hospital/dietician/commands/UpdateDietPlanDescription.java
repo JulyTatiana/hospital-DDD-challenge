@@ -13,7 +13,7 @@ public class UpdateDietPlanDescription extends Command {
         this.description = description;
     }
 
-    public DieticianID getTrainerID() {
+    public DieticianID getDieticianID() {
         return dieticianID;
     }
 

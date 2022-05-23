@@ -10,7 +10,7 @@ public class UpdateClientPhoneNumberUseCase extends UseCase<RequestCommand<Updat
     @Override
     public void executeUseCase(RequestCommand<UpdateClientPhoneNumber> updateClientPhoneNumberRequestCommand) {
         var command = updateClientPhoneNumberRequestCommand.getCommand();
-        Dietician dietician = Dietician.from(command.getTrainerID(), repository().getEventsBy(command.getTrainerID().value()));
+        Dietician dietician = Dietician.from(command.getDieticianID(), repository().getEventsBy(command.getDieticianID().value()));
 
         dietician.updateClientPhoneNumber(command.getClientID(), command.getPhoneNumber());
         emit().onResponse(new ResponseEvents(dietician.getUncommittedChanges()));

@@ -13,7 +13,7 @@ public class RemoveClient extends Command {
         this.clientID = clientID;
     }
 
-    public DieticianID getTrainerID() {
+    public DieticianID getDieticianID() {
         return dieticianID;
     }
 

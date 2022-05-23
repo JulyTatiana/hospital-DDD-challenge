@@ -19,7 +19,7 @@ public class AddClient extends Command {
         this.phoneNumber = phoneNumber;
     }
 
-    public DieticianID getTrainerID() {
+    public DieticianID getDieticianID() {
         return dieticianID;
     }
 
@@ -27,7 +27,7 @@ public class AddClient extends Command {
         return name;
     }
 
-    public Condition getFitnessLevel() {
+    public Condition getCondition() {
         return condition;
     }
 

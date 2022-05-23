@@ -27,5 +27,4 @@ public class UpdateClientCondition extends Command {
     public Condition getCondition() {
         return condition;
     }
-
 }
