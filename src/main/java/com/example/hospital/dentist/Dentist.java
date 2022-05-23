@@ -4,7 +4,6 @@ import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.example.hospital.dentist.events.*;
 import com.example.hospital.dentist.values.*;
-import com.example.hospital.dietician.values.Description;
 import com.example.hospital.dietician.values.Name;
 
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.Set;
 
 public class Dentist extends AggregateEvent<DentistID> {
     protected Set<Patient> patientSet;
-    protected Map<PatientID, Diet> dietMap;
+    protected Map<PatientID, Treatment> dietMap;
     protected Name name;
 
     public Dentist(DentistID entityId, Name name) {

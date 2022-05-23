@@ -23,7 +23,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class UpdateDietPlanDescriptionUseCaseTest {
+class UpdateTreatmentPlanDescriptionUseCaseTest {
     @InjectMocks
     private UpdateDietPlanDescriptionUseCase useCase;
 

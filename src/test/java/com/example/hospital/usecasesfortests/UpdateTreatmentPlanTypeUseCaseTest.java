@@ -22,7 +22,7 @@ import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 
-class UpdateDietPlanTypeUseCaseTest {
+class UpdateTreatmentPlanTypeUseCaseTest {
 
     @InjectMocks
     private UpdateDietPlanTypeUseCase useCase;

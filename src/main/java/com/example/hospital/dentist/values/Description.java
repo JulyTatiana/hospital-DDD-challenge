@@ -4,15 +4,15 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class IsWaiting implements ValueObject<Boolean> {
-    private final Boolean value;
+public class Description implements ValueObject<String> {
+    private final String value;
 
-    public IsWaiting(Boolean value) {
+    public Description(String value) {
         this.value = Objects.requireNonNull(value);
     }
 
     @Override
-    public Boolean value() {
+    public String value() {
         return this.value;
     }
 }

@@ -21,7 +21,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-class UpdateDietPlanIsCompletedUseCaseTest {
+class UpdateTreatmentPlanIsCompletedUseCaseTest {
     @InjectMocks
     private UpdateDietPlanIsCompletedUseCase useCase;
 
