@@ -33,14 +33,14 @@ class UpdateDietPlanTypeUseCaseTest {
     @Test
     void updateDietPlanDescription() {
         DieticianID fakeDieticianID = DieticianID.of("noDieticianID");
-        Type type = new Type(TypeEnum.FLEXIBILITY);
+        Type type = new Type(TypeEnum.CKD);
         var command = new UpdateDietPlanType(fakeDieticianID, type);
 
         Mockito.when(repository.getEventsBy("noDieticianID")).thenReturn(List.of(
                 new DieticianCreated(new Name("Emilia")),
-                new DietPlanAdded(com.example.hospital.dietician.values.DietPlanID.of("noRoutine"), new Description("oldDescription"), new Type(TypeEnum.RESISTANCE)),
-                new ClientAdded(ClientID.of("noClientID"), new Name("david"), new Condition(ConditionEnum.MEDIUM), new PhoneNumber("3105968248")),
-                new ClientAdded(ClientID.of("anotherClient"), new Name("Luis"), new Condition(ConditionEnum.MEDIUM), new PhoneNumber("3110001212"))
+                new DietPlanAdded(com.example.hospital.dietician.values.DietPlanID.of("noRoutine"), new Description("oldDescription"), new Type(TypeEnum.PREGNANT)),
+                new ClientAdded(ClientID.of("noClientID"), new Name("david"), new Condition(ConditionEnum.NORMAL), new PhoneNumber("3105968248")),
+                new ClientAdded(ClientID.of("anotherClient"), new Name("Luis"), new Condition(ConditionEnum.NORMAL), new PhoneNumber("3110001212"))
         ));
 
         useCase.addRepository(repository);
@@ -52,7 +52,7 @@ class UpdateDietPlanTypeUseCaseTest {
                 .getDomainEvents();
 
         var event = (DietPlanTypeUpdated) domainEvents.get(0);
-        Assertions.assertEquals(TypeEnum.FLEXIBILITY, event.getType().value());
+        Assertions.assertEquals(TypeEnum.CKD, event.getType().value());
         Mockito.verify(repository).getEventsBy("noDieticianID");
     }
 }

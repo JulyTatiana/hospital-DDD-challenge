@@ -20,7 +20,7 @@ public class Service extends Entity<ServiceID> {
         return value;
     }
 
-    public void updateTier(Value value) {
+    public void updateValue(Value value) {
         this.value = Objects.requireNonNull(value);
     }
 

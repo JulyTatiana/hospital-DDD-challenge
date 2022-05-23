@@ -31,7 +31,7 @@ class AddTreatmentPlanUseCaseTest {
 
         DieticianID dieticianID = DieticianID.of("noDieticianID");
         Description description = new Description("dietPlan test case#1");
-        Type type = new Type(TypeEnum.CARDIO);
+        Type type = new Type(TypeEnum.DIABETES);
         var command = new AddDietPlan(dieticianID, description, type);
 
         Mockito.when(repository.getEventsBy("noDieticianID")).thenReturn(history());
@@ -47,7 +47,7 @@ class AddTreatmentPlanUseCaseTest {
 
         var event = (DietPlanAdded) domainEvents.get(0);
         Assertions.assertEquals("dietPlan test case#1", event.getDescription().value());
-        Assertions.assertEquals(TypeEnum.CARDIO, event.getType().value());
+        Assertions.assertEquals(TypeEnum.DIABETES, event.getType().value());
         Mockito.verify(repository).getEventsBy("noDieticianID");
     }
 

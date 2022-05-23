@@ -33,14 +33,14 @@ class UpdateClientConditionUseCaseTest {
 
         DieticianID fakeDieticianID = DieticianID.of("noDieticianID");
         ClientID fakeClientID = ClientID.of("noClientID");
-        Condition updatedCondition = new Condition(ConditionEnum.HIGH);
+        Condition updatedCondition = new Condition(ConditionEnum.OVERWEIGHT);
 
         var command = new UpdateClientCondition(fakeDieticianID, fakeClientID, updatedCondition);
 
         Mockito.when(repository.getEventsBy("noDieticianID")).thenReturn(List.of(
                 new DieticianCreated(new Name("Emilia")),
-                new ClientAdded(ClientID.of("noClientID"), new Name("david"), new Condition(ConditionEnum.MEDIUM), new PhoneNumber("312987657")),
-                new ClientAdded(ClientID.of("anotherClient"), new Name("Luis"), new Condition(ConditionEnum.MEDIUM), new PhoneNumber("312777757"))
+                new ClientAdded(ClientID.of("noClientID"), new Name("david"), new Condition(ConditionEnum.NORMAL), new PhoneNumber("312987657")),
+                new ClientAdded(ClientID.of("anotherClient"), new Name("Luis"), new Condition(ConditionEnum.NORMAL), new PhoneNumber("312777757"))
         ));
 
         useCase.addRepository(repository);
@@ -52,7 +52,7 @@ class UpdateClientConditionUseCaseTest {
                 .getDomainEvents();
 
         var event = (ClientConditionUpdated) domainEvents.get(0);
-        Assertions.assertEquals(ConditionEnum.HIGH, event.getCondition().value());
+        Assertions.assertEquals(ConditionEnum.OVERWEIGHT, event.getCondition().value());
         Assertions.assertEquals("noClientID", event.getClientID().value());
         Mockito.verify(repository).getEventsBy("noDieticianID");
     }

@@ -36,9 +36,9 @@ class UpdateDietPlanStateUseCaseTest {
 
         Mockito.when(repository.getEventsBy("noDieticianID")).thenReturn(List.of(
                 new DieticianCreated(new Name("Emilia")),
-                new DietPlanAdded(com.example.hospital.dietician.values.DietPlanID.of("noDietPlan"), new Description("oldDescription"), new Type(TypeEnum.RESISTANCE)),
-                new ClientAdded(ClientID.of("noClientID"), new Name("david"), new Condition(ConditionEnum.MEDIUM), new PhoneNumber("312987657")),
-                new ClientAdded(ClientID.of("anotherClient"), new Name("Luis"), new Condition(ConditionEnum.MEDIUM), new PhoneNumber("312777757"))
+                new DietPlanAdded(com.example.hospital.dietician.values.DietPlanID.of("noDietPlan"), new Description("oldDescription"), new Type(TypeEnum.PREGNANT)),
+                new ClientAdded(ClientID.of("noClientID"), new Name("david"), new Condition(ConditionEnum.NORMAL), new PhoneNumber("312987657")),
+                new ClientAdded(ClientID.of("anotherClient"), new Name("Luis"), new Condition(ConditionEnum.NORMAL), new PhoneNumber("312777757"))
         ));
 
         useCase.addRepository(repository);
