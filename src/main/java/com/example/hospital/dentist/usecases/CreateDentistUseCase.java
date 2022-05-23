@@ -8,11 +8,11 @@ import com.example.hospital.dentist.commands.CreateDentist;
 
 public class CreateDentistUseCase extends UseCase<RequestCommand<CreateDentist>, ResponseEvents> {
     @Override
-    public void executeUseCase(RequestCommand<CreateDentist> createNutritionistRequestCommand) {
-        var command = createNutritionistRequestCommand.getCommand();
+    public void executeUseCase(RequestCommand<CreateDentist> createDentistRequestCommand) {
+        var command = createDentistRequestCommand.getCommand();
 
-        var nutritionist = new Dentist(command.getEntityId(), command.getName());
+        var dentist = new Dentist(command.getEntityId(), command.getName());
 
-        emit().onResponse(new ResponseEvents(nutritionist.getUncommittedChanges()));
+        emit().onResponse(new ResponseEvents(dentist.getUncommittedChanges()));
     }
 }

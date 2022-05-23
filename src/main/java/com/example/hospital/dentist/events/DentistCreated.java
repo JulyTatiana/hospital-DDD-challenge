@@ -8,7 +8,7 @@ public class DentistCreated extends DomainEvent {
     private final Name name;
 
     public DentistCreated(Name name) {
-        super("com.zen.gymdomain.dentist.nutritionistcreated");
+        super("com.example.hospital.dentist.dentistcreated");
         this.name = name;
     }
 
