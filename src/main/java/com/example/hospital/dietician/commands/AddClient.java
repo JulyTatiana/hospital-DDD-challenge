@@ -2,20 +2,20 @@ package com.example.hospital.dietician.commands;
 
 import co.com.sofka.domain.generic.Command;
 import com.example.hospital.dietician.values.DieticianID;
-import com.example.hospital.dietician.values.FitnessLevel;
+import com.example.hospital.dietician.values.Condition;
 import com.example.hospital.dietician.values.Name;
 import com.example.hospital.dietician.values.PhoneNumber;
 
 public class AddClient extends Command {
     private final DieticianID dieticianID;
     private final Name name;
-    private final FitnessLevel fitnessLevel;
+    private final Condition condition;
     private final PhoneNumber phoneNumber;
 
-    public AddClient(DieticianID dieticianID, Name name, FitnessLevel fitnessLevel, PhoneNumber phoneNumber) {
+    public AddClient(DieticianID dieticianID, Name name, Condition condition, PhoneNumber phoneNumber) {
         this.dieticianID = dieticianID;
         this.name = name;
-        this.fitnessLevel = fitnessLevel;
+        this.condition = condition;
         this.phoneNumber = phoneNumber;
     }
 
@@ -27,8 +27,8 @@ public class AddClient extends Command {
         return name;
     }
 
-    public FitnessLevel getFitnessLevel() {
-        return fitnessLevel;
+    public Condition getFitnessLevel() {
+        return condition;
     }
 
     public PhoneNumber getPhoneNumber() {

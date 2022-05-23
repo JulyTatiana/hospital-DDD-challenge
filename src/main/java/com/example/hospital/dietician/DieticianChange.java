@@ -21,9 +21,9 @@ public class DieticianChange extends EventChange {
             dietician.clientSet.removeIf(client -> client.identity().equals(event.getClientID()));
         });
 
-        apply((ClientFitnessLevelUpdated event) -> {
+        apply((ClientConditionUpdated event) -> {
             Client client = dietician.findClientById(event.getClientID()).orElseThrow();
-            client.updateFitnessLevel(event.getFitnessLevel());
+            client.updateFitnessLevel(event.getCondition());
         });
 
         apply((ClientPhoneNumberUpdated event) -> {

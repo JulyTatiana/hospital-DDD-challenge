@@ -2,7 +2,7 @@ package com.example.hospital.dietician;
 
 import co.com.sofka.domain.generic.Entity;
 import com.example.hospital.dietician.values.ClientID;
-import com.example.hospital.dietician.values.FitnessLevel;
+import com.example.hospital.dietician.values.Condition;
 import com.example.hospital.dietician.values.Name;
 import com.example.hospital.dietician.values.PhoneNumber;
 
@@ -10,23 +10,23 @@ import java.util.Objects;
 
 public class Client extends Entity<ClientID> {
 
-    private FitnessLevel fitnessLevel;
+    private Condition condition;
     private Name name;
     private PhoneNumber phoneNumber;
-    public Client(ClientID entityId, Name name, FitnessLevel fitnessLevel, PhoneNumber phoneNumber) {
+    public Client(ClientID entityId, Name name, Condition condition, PhoneNumber phoneNumber) {
         super(entityId);
         this.name = name;
-        this.fitnessLevel = fitnessLevel;
+        this.condition = condition;
         this.phoneNumber = phoneNumber;
     }
 
 
-    public FitnessLevel getFitnessLevel() {
-        return fitnessLevel;
+    public Condition getFitnessLevel() {
+        return condition;
     }
 
-    public void updateFitnessLevel(FitnessLevel fitnessLevel) {
-        this.fitnessLevel = Objects.requireNonNull(fitnessLevel);
+    public void updateFitnessLevel(Condition condition) {
+        this.condition = Objects.requireNonNull(condition);
     }
 
     public Name getName() {

@@ -1,5 +1,5 @@
 package com.example.hospital.dietician.values;
 
-public enum FitnessLevelEnum {
+public enum ConditionEnum {
     LOW, MEDIUM, HIGH
 }

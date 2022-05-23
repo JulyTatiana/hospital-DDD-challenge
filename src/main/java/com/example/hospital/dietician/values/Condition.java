@@ -4,15 +4,15 @@ import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
 
-public class FitnessLevel implements ValueObject<FitnessLevelEnum> {
-    private final FitnessLevelEnum value;
+public class Condition implements ValueObject<ConditionEnum> {
+    private final ConditionEnum value;
 
-    public FitnessLevel(FitnessLevelEnum value) {
+    public Condition(ConditionEnum value) {
         this.value = Objects.requireNonNull(value);
     }
 
     @Override
-    public FitnessLevelEnum value() {
+    public ConditionEnum value() {
         return this.value;
     }
 
@@ -20,7 +20,7 @@ public class FitnessLevel implements ValueObject<FitnessLevelEnum> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FitnessLevel that = (FitnessLevel) o;
+        Condition that = (Condition) o;
         return value == that.value;
     }
 

@@ -35,9 +35,9 @@ class AddClientUseCaseTest {
 
         DieticianID dieticianID = DieticianID.of("noDieticianID");
         Name name = new Name("Salomon");
-        FitnessLevel fitnessLevel = new FitnessLevel(FitnessLevelEnum.HIGH);
+        Condition condition = new Condition(ConditionEnum.HIGH);
         PhoneNumber phoneNumber = new PhoneNumber("3105968248");
-        var command = new AddClient(dieticianID, name, fitnessLevel, phoneNumber);
+        var command = new AddClient(dieticianID, name, condition, phoneNumber);
 
         when(repository.getEventsBy("noDieticianID")).thenReturn(history());
         useCase.addRepository(repository);
@@ -52,7 +52,7 @@ class AddClientUseCaseTest {
         var event = (ClientAdded) events.get(0);
         Assertions.assertEquals("Salomon", event.getName().value());
         assertEquals("3105968248", event.getPhoneNumber().value());
-        assertEquals(FitnessLevelEnum.HIGH, event.getFitnessLevel().value());
+        assertEquals(ConditionEnum.HIGH, event.getFitnessLevel().value());
         Mockito.verify(repository).getEventsBy("noDieticianID");
     }
 

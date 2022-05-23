@@ -3,21 +3,21 @@ package com.example.hospital.dietician.events;
 import co.com.sofka.domain.generic.DomainEvent;
 import com.example.hospital.dietician.values.ClientID;
 import com.example.hospital.dietician.values.PhoneNumber;
-import com.example.hospital.dietician.values.FitnessLevel;
+import com.example.hospital.dietician.values.Condition;
 import com.example.hospital.dietician.values.Name;
 
 public class ClientAdded extends DomainEvent {
 
     private final ClientID clientID;
     private final Name name;
-    private final FitnessLevel fitnessLevel;
+    private final Condition condition;
     private final PhoneNumber phoneNumber;
 
-    public ClientAdded(ClientID clientID, Name name, FitnessLevel fitnessLevel, PhoneNumber phoneNumber) {
+    public ClientAdded(ClientID clientID, Name name, Condition condition, PhoneNumber phoneNumber) {
         super("com.example.hospital.dietician.clientadded");
         this.clientID = clientID;
         this.name = name;
-        this.fitnessLevel = fitnessLevel;
+        this.condition = condition;
         this.phoneNumber = phoneNumber;
     }
 
@@ -25,8 +25,8 @@ public class ClientAdded extends DomainEvent {
         return name;
     }
 
-    public FitnessLevel getFitnessLevel() {
-        return fitnessLevel;
+    public Condition getFitnessLevel() {
+        return condition;
     }
 
     public PhoneNumber getPhoneNumber() {

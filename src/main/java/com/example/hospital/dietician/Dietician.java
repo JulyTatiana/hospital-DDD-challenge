@@ -31,17 +31,17 @@ public class Dietician extends AggregateEvent<DieticianID> {
         return dietician;
     }
 //  events
-    public void addClient(Name name, FitnessLevel fitnessLevel, PhoneNumber phoneNumber) {
+    public void addClient(Name name, Condition condition, PhoneNumber phoneNumber) {
         ClientID clientID = new ClientID();
-        appendChange(new ClientAdded(clientID, name, fitnessLevel, phoneNumber)).apply();
+        appendChange(new ClientAdded(clientID, name, condition, phoneNumber)).apply();
     }
 
     public void removeClient(ClientID clientID) {
         appendChange(new ClientRemoved(clientID)).apply();
     }
 
-    public void updateClientFitnessLevel(ClientID clientID, FitnessLevel fitnessLevel) {
-        appendChange(new ClientFitnessLevelUpdated(clientID, fitnessLevel)).apply();
+    public void updateClientCondition(ClientID clientID, Condition condition) {
+        appendChange(new ClientConditionUpdated(clientID, condition)).apply();
     }
 
     public void updateClientPhoneNumber(ClientID clientID, PhoneNumber phoneNumber) {
@@ -85,4 +85,5 @@ public class Dietician extends AggregateEvent<DieticianID> {
     public Name getName() {
         return name;
     }
+
 }
