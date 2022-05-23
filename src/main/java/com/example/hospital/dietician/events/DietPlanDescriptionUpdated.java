@@ -7,7 +7,7 @@ public class DietPlanDescriptionUpdated extends DomainEvent {
     private final Description description;
 
     public DietPlanDescriptionUpdated(Description description) {
-        super("com.zen.gymdomain.dietician.routinedescriptionupdated");
+        super("com.example.hospital.dietician.routinedescriptionupdated");
         this.description = description;
     }
 

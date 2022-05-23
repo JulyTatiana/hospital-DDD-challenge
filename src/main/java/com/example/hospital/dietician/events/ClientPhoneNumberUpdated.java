@@ -9,7 +9,7 @@ public class ClientPhoneNumberUpdated extends DomainEvent {
     private final PhoneNumber phoneNumber;
 
     public ClientPhoneNumberUpdated(ClientID clientID, PhoneNumber phoneNumber) {
-        super("com.zen.gymdomain.dietician.clientphonenumberupdated");
+        super("com.example.dietician.clientphonenumberupdated");
         this.clientID = clientID;
         this.phoneNumber = phoneNumber;
     }

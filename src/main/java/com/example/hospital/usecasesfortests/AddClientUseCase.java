@@ -1,4 +1,4 @@
-package com.example.hospital.alltests;
+package com.example.hospital.usecasesfortests;
 
 import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.RequestCommand;

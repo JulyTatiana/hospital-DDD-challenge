@@ -1,4 +1,4 @@
-package com.example.hospital.alltests;
+package com.example.hospital.usecasesfortests;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
@@ -33,7 +33,7 @@ class CreateDentistTest {
 
         var command = new CreateDentist(dentistID, name);
 
-//        list of events
+        //Events
         List<DomainEvent> domainEvents = UseCaseHandler.getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()

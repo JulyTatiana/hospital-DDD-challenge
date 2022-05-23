@@ -1,13 +1,12 @@
-package com.example.hospital.alltests;
+package com.example.hospital.usecasesfortests;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.example.hospital.dietician.commands.UpdateDietPlanDescription;
+import com.example.hospital.dietician.commands.RemoveClient;
 import com.example.hospital.dietician.events.ClientAdded;
-import com.example.hospital.dietician.events.DietPlanAdded;
-import com.example.hospital.dietician.events.DietPlanDescriptionUpdated;
+import com.example.hospital.dietician.events.ClientRemoved;
 import com.example.hospital.dietician.events.DieticianCreated;
 import com.example.hospital.dietician.values.*;
 import org.junit.jupiter.api.Assertions;
@@ -20,26 +19,27 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class UpdateDietPlanDescriptionUseCaseTest {
+class RemoveClientUseCaseTest {
+
     @InjectMocks
-    private UpdateDietPlanDescriptionUseCase useCase;
+    private RemoveClientUseCase useCase;
 
     @Mock
     private DomainEventRepository repository;
 
     @Test
-    void updateDietPlanDescription() {
-        DieticianID fakeDieticianID = DieticianID.of("noDieticianID");
-        Description description = new Description("updated description");
+    void removeClientFromDietician() {
 
-        var command = new UpdateDietPlanDescription(fakeDieticianID, description);
+        DieticianID fakeDieticianID = DieticianID.of("noDieticianID");
+        ClientID fakeClientID = ClientID.of("noClientID");
+
+        var command = new RemoveClient(fakeDieticianID, fakeClientID);
 
         Mockito.when(repository.getEventsBy("noDieticianID")).thenReturn(List.of(
                 new DieticianCreated(new Name("Emilia")),
-                new DietPlanAdded(com.example.hospital.dietician.values.DietPlanID.of("noDietPlan"), new Description("oldDescription"), new Type(TypeEnum.RESISTANCE)),
                 new ClientAdded(ClientID.of("noClientID"), new Name("david"), new FitnessLevel(FitnessLevelEnum.MEDIUM), new PhoneNumber("312987657")),
                 new ClientAdded(ClientID.of("anotherClient"), new Name("Luis"), new FitnessLevel(FitnessLevelEnum.MEDIUM), new PhoneNumber("312777757"))
         ));
@@ -52,8 +52,10 @@ class UpdateDietPlanDescriptionUseCaseTest {
                 .orElseThrow()
                 .getDomainEvents();
 
-        var event = (DietPlanDescriptionUpdated) domainEvents.get(0);
-        Assertions.assertEquals("updated description", event.getDescription().value());
+        var event = (ClientRemoved) domainEvents.get(0);
+        Assertions.assertEquals("noClientID", event.getClientID().value());
+        assertTrue(event.getWasDeleted());
         Mockito.verify(repository).getEventsBy("noDieticianID");
     }
+
 }

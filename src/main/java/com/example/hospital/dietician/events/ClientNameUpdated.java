@@ -9,7 +9,7 @@ public class ClientNameUpdated extends DomainEvent {
     private final Name name;
 
     public ClientNameUpdated(ClientID clientID, Name name) {
-        super("com.zen.gymdomain.dietician.clientnameupdated");
+        super("com.example.hospital.dietician.clientnameupdated");
         this.clientID = clientID;
         this.name = name;
     }

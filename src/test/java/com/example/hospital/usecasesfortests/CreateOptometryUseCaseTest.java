@@ -1,4 +1,4 @@
-package com.example.hospital.alltests;
+package com.example.hospital.usecasesfortests;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
@@ -26,24 +26,21 @@ class CreateOptometryUseCaseTest {
 
     @Test
     void createOptometry() {
-//        given
-//        OptometryID of
+
         OptometryID optometryID = OptometryID.of("noOptometryID");
-//        Name
+
         Name name = new Name("Luz");
-//        CreateOptometry command
+
         var command = new CreateOptometry(optometryID, name);
-//        when
-//        list of events
+
         List<DomainEvent> domainEvents = UseCaseHandler.getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
 
-//        assert
-//        CreateOptometry created
+
         OptometryCreated optometryCreated = (OptometryCreated) domainEvents.get(0);
-//        assert values
+
         assertEquals("Luz", optometryCreated.getName().value());
         assertEquals("noOptometryID", optometryCreated.aggregateRootId());
     }

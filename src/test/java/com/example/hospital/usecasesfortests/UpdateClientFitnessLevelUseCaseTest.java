@@ -1,12 +1,12 @@
-package com.example.hospital.alltests;
+package com.example.hospital.usecasesfortests;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.example.hospital.dietician.commands.UpdateClientPhoneNumber;
+import com.example.hospital.dietician.commands.UpdateClientFitnessLevel;
 import com.example.hospital.dietician.events.ClientAdded;
-import com.example.hospital.dietician.events.ClientPhoneNumberUpdated;
+import com.example.hospital.dietician.events.ClientFitnessLevelUpdated;
 import com.example.hospital.dietician.events.DieticianCreated;
 import com.example.hospital.dietician.values.*;
 import org.junit.jupiter.api.Assertions;
@@ -19,24 +19,23 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @ExtendWith(MockitoExtension.class)
-class UpdateClientPhoneNumberUseCaseTest {
+class UpdateClientFitnessLevelUseCaseTest {
 
     @InjectMocks
-    private UpdateClientPhoneNumberUseCase useCase;
+    private UpdateClientFitnessLevelUseCase useCase;
 
     @Mock
     private DomainEventRepository repository;
 
     @Test
-    void updateClientPhoneNumber() {
+    void updateClientFitnessLevel() {
+
         DieticianID fakeDieticianID = DieticianID.of("noDieticianID");
         ClientID fakeClientID = ClientID.of("noClientID");
-        PhoneNumber phoneNumber = new PhoneNumber("3205827484");
+        FitnessLevel updatedFitnessLevel = new FitnessLevel(FitnessLevelEnum.HIGH);
 
-        var command = new UpdateClientPhoneNumber(fakeDieticianID, fakeClientID, phoneNumber);
+        var command = new UpdateClientFitnessLevel(fakeDieticianID, fakeClientID, updatedFitnessLevel);
 
         Mockito.when(repository.getEventsBy("noDieticianID")).thenReturn(List.of(
                 new DieticianCreated(new Name("Emilia")),
@@ -52,9 +51,10 @@ class UpdateClientPhoneNumberUseCaseTest {
                 .orElseThrow()
                 .getDomainEvents();
 
-        var event = (ClientPhoneNumberUpdated) domainEvents.get(0);
-        Assertions.assertEquals("3205827484", event.getPhoneNumber().value());
+        var event = (ClientFitnessLevelUpdated) domainEvents.get(0);
+        Assertions.assertEquals(FitnessLevelEnum.HIGH, event.getFitnessLevel().value());
         Assertions.assertEquals("noClientID", event.getClientID().value());
         Mockito.verify(repository).getEventsBy("noDieticianID");
     }
+
 }

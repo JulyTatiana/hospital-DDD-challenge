@@ -7,7 +7,7 @@ public class DietPlanTypeUpdated extends DomainEvent {
     private final Type type;
 
     public DietPlanTypeUpdated(Type type) {
-        super("com.zen.gymdomain.dietician.routinetypeupdated");
+        super("com.example.hospital.dietician.routinetypeupdated");
         this.type = type;
     }
 

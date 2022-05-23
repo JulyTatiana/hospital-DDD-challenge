@@ -8,7 +8,7 @@ public class DieticianCreated extends DomainEvent {
 
 
     public DieticianCreated(Name name) {
-        super("com.zen.gymdomain.dietician.trainercreated");
+        super("com.example.hospital.dietician.trainercreated");
         this.name = name;
     }
 

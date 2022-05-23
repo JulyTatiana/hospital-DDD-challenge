@@ -1,12 +1,13 @@
-package com.example.hospital.alltests;
+package com.example.hospital.usecasesfortests;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import com.example.hospital.dietician.commands.RemoveClient;
+import com.example.hospital.dietician.commands.UpdateDietPlanType;
 import com.example.hospital.dietician.events.ClientAdded;
-import com.example.hospital.dietician.events.ClientRemoved;
+import com.example.hospital.dietician.events.DietPlanAdded;
+import com.example.hospital.dietician.events.DietPlanTypeUpdated;
 import com.example.hospital.dietician.events.DieticianCreated;
 import com.example.hospital.dietician.values.*;
 import org.junit.jupiter.api.Assertions;
@@ -19,29 +20,27 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
-class RemoveClientUseCaseTest {
+
+class UpdateDietPlanTypeUseCaseTest {
 
     @InjectMocks
-    private RemoveClientUseCase useCase;
+    private UpdateDietPlanTypeUseCase useCase;
 
     @Mock
     private DomainEventRepository repository;
 
     @Test
-    void removeClientFromDietician() {
-
+    void updateDietPlanDescription() {
         DieticianID fakeDieticianID = DieticianID.of("noDieticianID");
-        ClientID fakeClientID = ClientID.of("noClientID");
-
-        var command = new RemoveClient(fakeDieticianID, fakeClientID);
+        Type type = new Type(TypeEnum.FLEXIBILITY);
+        var command = new UpdateDietPlanType(fakeDieticianID, type);
 
         Mockito.when(repository.getEventsBy("noDieticianID")).thenReturn(List.of(
                 new DieticianCreated(new Name("Emilia")),
-                new ClientAdded(ClientID.of("noClientID"), new Name("david"), new FitnessLevel(FitnessLevelEnum.MEDIUM), new PhoneNumber("312987657")),
-                new ClientAdded(ClientID.of("anotherClient"), new Name("Luis"), new FitnessLevel(FitnessLevelEnum.MEDIUM), new PhoneNumber("312777757"))
+                new DietPlanAdded(com.example.hospital.dietician.values.DietPlanID.of("noRoutine"), new Description("oldDescription"), new Type(TypeEnum.RESISTANCE)),
+                new ClientAdded(ClientID.of("noClientID"), new Name("david"), new FitnessLevel(FitnessLevelEnum.MEDIUM), new PhoneNumber("3105968248")),
+                new ClientAdded(ClientID.of("anotherClient"), new Name("Luis"), new FitnessLevel(FitnessLevelEnum.MEDIUM), new PhoneNumber("3110001212"))
         ));
 
         useCase.addRepository(repository);
@@ -52,10 +51,8 @@ class RemoveClientUseCaseTest {
                 .orElseThrow()
                 .getDomainEvents();
 
-        var event = (ClientRemoved) domainEvents.get(0);
-        Assertions.assertEquals("noClientID", event.getClientID().value());
-        assertTrue(event.getWasDeleted());
+        var event = (DietPlanTypeUpdated) domainEvents.get(0);
+        Assertions.assertEquals(TypeEnum.FLEXIBILITY, event.getType().value());
         Mockito.verify(repository).getEventsBy("noDieticianID");
     }
-
 }

@@ -8,7 +8,7 @@ public class ClientRemoved extends DomainEvent {
     private final Boolean wasDeleted;
 
     public ClientRemoved(ClientID clientID) {
-        super("com.zen.gymdomain.dietician.clientremoved");
+        super("com.example.hospital.dietician.clientremoved");
         this.clientID = clientID;
         this.wasDeleted = true;
     }

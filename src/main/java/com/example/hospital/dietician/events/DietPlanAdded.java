@@ -12,7 +12,7 @@ public class DietPlanAdded extends DomainEvent {
     private final Type type;
 
     public DietPlanAdded(DietPlanID dietPlanID, Description description, Type type) {
-        super("com.zen.gymdomain.dietician.routineadded");
+        super("com.example.hospital.dietician.routineadded");
         this.dietPlanID = dietPlanID;
         this.description = description;
         this.type = type;

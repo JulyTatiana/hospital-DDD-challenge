@@ -1,18 +1,19 @@
-package com.example.hospital.alltests;
+package com.example.hospital.usecasesfortests;
 
 import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.ResponseEvents;
 import com.example.hospital.dietician.Dietician;
-import com.example.hospital.dietician.commands.RemoveClient;
+import com.example.hospital.dietician.commands.AddDietPlan;
 
-public class RemoveClientUseCase extends UseCase<RequestCommand<RemoveClient>, ResponseEvents> {
+public class AddDietPlanUseCase extends UseCase<RequestCommand<AddDietPlan>, ResponseEvents> {
     @Override
-    public void executeUseCase(RequestCommand<RemoveClient> removeClientRequestCommand) {
-        var command = removeClientRequestCommand.getCommand();
+    public void executeUseCase(RequestCommand<AddDietPlan> addRoutineRequestCommand) {
+        var command = addRoutineRequestCommand.getCommand();
         Dietician dietician = Dietician.from(command.getTrainerID(), repository().getEventsBy(command.getTrainerID().value()));
-
-        dietician.removeClient(command.getClientID());
+        
+        dietician.addRoutine(command.getDescription(), command.getType());
         emit().onResponse(new ResponseEvents(dietician.getUncommittedChanges()));
+
     }
 }

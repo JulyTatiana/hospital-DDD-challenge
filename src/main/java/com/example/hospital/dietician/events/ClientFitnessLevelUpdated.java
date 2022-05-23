@@ -9,7 +9,7 @@ public class ClientFitnessLevelUpdated extends DomainEvent {
     private final FitnessLevel fitnessLevel;
 
     public ClientFitnessLevelUpdated(ClientID clientID, FitnessLevel fitnessLevel) {
-        super("com.zen.gymdomain.dietician.clientfitnesslevelupdated");
+        super("com.example.hospital.dietician.clientfitnesslevelupdated");
 
         this.clientID = clientID;
         this.fitnessLevel = fitnessLevel;

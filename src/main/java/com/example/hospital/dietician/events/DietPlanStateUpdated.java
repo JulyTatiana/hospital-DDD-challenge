@@ -7,7 +7,7 @@ public class DietPlanStateUpdated extends DomainEvent {
     private final IsCompleted isCompleted;
 
     public DietPlanStateUpdated(IsCompleted isCompleted) {
-        super("com.zen.gymdomain.dietician.routineiscompletedupdated");
+        super("com.example.hospital.dietician.routineiscompletedupdated");
         this.isCompleted = isCompleted;
     }
 
